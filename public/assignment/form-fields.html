@@ -36,14 +36,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Register <span class="sr-only">(current)</span></a></li>
-            <li><a href="login.html">Login</a></li>
             <li><a href="#">Username</a></li>
             <li><a href="#">Logout</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
         </div>
       </div>
     </nav>
@@ -55,55 +50,83 @@
             <li><a href="home.html">Home</a></li>
             <li><a href="profile.html">Profile</a></li>
             <li><a href="admin.html">Admin</a></li>
-            <li><a href="form.html">Forms</a></li>
+            <li class="active"><a href="#">Forms<span class="sr-only">(current)</span></a></li>
 
           </ul>
           
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Register</h1>
-          <form class="form-horizontal">
+          <h1 class="page-header">Registration Form</h1>
+          <ul class="nav nav-tabs">
+            <li role="presentation"><a href="forms.html">Forms</a></li>
+            <li role="presentation" class="active"><a href="#">Fields</a></li>
+          </ul>
+          <form>
             <div class="form-group">
-              <label for="usernameInput" class="col-sm-2 control-label">Username:</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="usernameInput" placeholder="Username">
-              </div>
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
             </div>
             <div class="form-group">
-              <label for="inputPassword1" class="col-sm-2 control-label">Password:</label>
-              <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-              </div>
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <div class="form-group">
-              <label for="inputPassword2" class="col-sm-2 control-label">Verify Password:</label>
-              <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-              </div>
+            <h4>Date of Birth</h4>
+            <div>
+            <select class="form-control">
+              <option>1</option>
+              <option>2</option>
+            </select>  
             </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-              </div>
+            <h4>Gender</h4>
+            <div>
+            <select class="form-control">
+              <option>Male</option>
+              <option>Female</option>
+            </select>  
             </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> Remember me
-                  </label>
-                </div>
-              </div>
+            <h4>Roles</h4>     
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Admin
+              </label>
             </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Register</button>
-              </div>
+            <div class="checkbox disabled">
+              <label>
+                <input type="checkbox" value="" disabled>
+                Student
+              </label>
             </div>
-          </form>
-             
-        </div>
+            <div class="checkbox disabled">
+              <label>
+                <input type="checkbox" value="" disabled>
+                User
+              </label>
+            </div>
+            <h4>License Agreement</h4>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                YES
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                NO
+              </label>
+            </div>
+
+            <h4>Add New Field</h4>
+            <div>
+            <select class="form-control">
+              <option>Single line text</option>
+              <option>...</option>
+            </select>  
+            </div>
+          </form>  
+
+            </div>
       </div>
     </div>
 
