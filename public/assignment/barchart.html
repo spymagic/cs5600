@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>  
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="#">Username</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li><a href="forms.html">Forms</a></li>
+
+          </ul>
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <script>
+
+
+        function drawdiag()
+        {
+            //remove();
+            d3.select("svg").remove();
+
+            //画布大小
+            var width = 400;
+            var height = 400;
+
+            //在 body 里添加一个 SVG 画布   
+            var svg = d3.select("div")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            //画布周边的空白
+            var padding = {left:30, right:30, top:20, bottom:20};
+
+            //定义一个数组
+            k = document.getElementById('myField').value;
+            k = k.split(",");
+            var dataset = k;
+
+            //input data
+            
+
+            
+            //x轴的比例尺
+            var xScale = d3.scale.ordinal()
+                .domain(d3.range(dataset.length))
+                .rangeRoundBands([0, width - padding.left - padding.right]);
+
+            //y轴的比例尺
+            var yScale = d3.scale.linear()
+                .domain([0,d3.max(dataset)])
+                .range([height - padding.top - padding.bottom, 0]);
+
+            //定义x轴
+            var xAxis = d3.svg.axis()
+                .scale(xScale)
+                .orient("bottom");
+                
+            //定义y轴
+            var yAxis = d3.svg.axis()
+                .scale(yScale)
+                .orient("left");
+
+            //矩形之间的空白
+            var rectPadding = 4;
+
+            //添加矩形元素
+            var rects = svg.selectAll(".MyRect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("class","MyRect")
+                .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+                .attr("x", function(d,i){
+                    return xScale(i) + rectPadding/2;
+                } )
+                .attr("y",function(d){
+                    return yScale(d);
+                })
+                .attr("width", xScale.rangeBand() - rectPadding )
+                .attr("height", function(d){
+                    return height - padding.top - padding.bottom - yScale(d);
+                });
+
+            //添加文字元素
+            var texts = svg.selectAll(".MyText")
+                .data(dataset)
+                .enter()
+                .append("text")
+                .attr("class","MyText")
+                .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+                .attr("x", function(d,i){
+                    return xScale(i) + rectPadding/2;
+                } )
+                .attr("y",function(d){
+                    return yScale(d);
+                })
+                .attr("dx",function(){
+                    return (xScale.rangeBand() - rectPadding)/2;
+                })
+                .attr("dy",function(d){
+                    return 20;
+                })
+                .text(function(d){
+                    return d;
+                });
+
+            //添加x轴
+            svg.append("g")
+                .attr("class","axis")
+                .attr("transform","translate(" + padding.left + "," + (height - padding.bottom) + ")")
+                .call(xAxis); 
+                
+            //添加y轴
+            svg.append("g")
+                .attr("class","axis")
+                .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+                .call(yAxis);
+        }
+
+        </script>    
+        </head> 
+
+        <style>
+            .axis path,
+            .axis line{
+                fill: none;
+                stroke: black;
+                shape-rendering: crispEdges;
+            }
+
+            .axis text {
+                font-family: sans-serif;
+                font-size: 11px;
+            }
+
+            .MyRect {
+                fill: steelblue;
+            }
+
+            .MyText {
+                fill: white;
+                text-anchor: middle;
+            }
+        </style>
+
+     
+
+
+            <h1>Input Data in the box</h1>
+            <form action = "" method = "get">
+                Data input:
+                <Input type="text" id="myField" value=""/>   <!-- input data here -->
+                <input type = "button" value = "click" onclick="drawdiag()" />
+            </form>
+
+             
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
