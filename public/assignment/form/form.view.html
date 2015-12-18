@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Forms</h1>
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Forms</a></li>
+            <li role="presentation"><a href="form-fields.html">Fields</a></li>
+          </ul>
+          <table class="table table-bordered">
+            <tr>
+              <th>Form Name</th>
+              <th>Action</th>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" class="form-control" id="nameInput" placeholder="name" ng-model="name">
+              </td>
+              <td>
+                <button type="button" class="btn btn-default" aria-label="plus" ng-click="addForm()">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default" aria-label="ok" ng-click="updateForm()">
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </button>
+              </td>
+            </tr>
+            <tr ng-repeat="form in forms">
+              <td> {{form.name}} </td>
+              <td>
+                <div class="pull-right">
+                  <a type="submit" ng-click="deleteForm($index)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </a>
+                  <a type="submit" ng-click="selectForm($index)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            </table>
+               
+          </div>
+        </div>
+      </div>
+
+  </body>
+</html>

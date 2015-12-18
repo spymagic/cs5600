@@ -1,0 +1,21 @@
+<div ng-controller="SidebarController">
+
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+                    <li>
+                        <a ng-class = "{'link_active':isActive('/home')}" href="#/home"> Home </a>
+                    </li>
+                    <li>
+                        <a ng-class = "{'link_active':isActive('/profile')}" href="#/profile"> Profile </a>
+                    </li>
+                    <li>
+                        <a ng-class = "{'link_active':isActive('/admin')}" href="#/admin"> Admin </a>
+                    </li>
+                    <li>
+                        <a ng-class = "{'link_active':isActive('/forms')}" href="#/forms"> Forms </a>
+                    </li>
+
+          </ul>
+          
+        </div>
+<div>
